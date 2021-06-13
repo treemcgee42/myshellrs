@@ -14,9 +14,7 @@ fn main() {
         io::stdin().read_line(&mut command)
             .expect("Failed to read command.");
 
-        println!("{}",command.trim());
         if command=="ls\n" {
-            println!("here");
             ls::ls(&current_dir).unwrap();
         }
     }
