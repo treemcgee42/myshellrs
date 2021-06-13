@@ -1,3 +1,5 @@
+mod ls;
+
 use std::io;
 use std::io::Write;
 use std::env;
@@ -13,5 +15,9 @@ fn main() {
             .expect("Failed to read command.");
 
         println!("{}",command.trim());
+        if command=="ls\n" {
+            println!("here");
+            ls::ls(&current_dir).unwrap();
+        }
     }
 }
