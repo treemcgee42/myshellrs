@@ -32,6 +32,7 @@ pub fn ls(dir: &Path) -> Result<(), Box<Error>> {
             .into_string()
             .or_else(|f| Err(format!("Invalid entry: {:?}", f)))?;
             println!("{}", file_name);
+            println!("{:?}", file.metadata())
         }
     }
     Ok(())
