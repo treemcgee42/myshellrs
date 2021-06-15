@@ -1,5 +1,9 @@
 mod ls;
 
+use std::env;
+
 fn main() {
-    println!("Hello, world!");
+    let current_dir = env::current_dir().unwrap();
+    
+    ls::ls(&current_dir);
 }
