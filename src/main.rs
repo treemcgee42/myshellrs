@@ -12,6 +12,12 @@ fn main() {
             .required(false)
             .takes_value(true)
             .help("operate on directory other than current one"))
+        .arg(Arg::with_name("show_dot")
+            .required(false)
+            .takes_value(false)
+            .short("a")
+            .long("all")
+            .help("show files beginning with '.' (hidden by default)"))
         .get_matches();
 
     let mut working_dir = env::current_dir().unwrap();
@@ -21,6 +27,8 @@ fn main() {
     if !working_dir.is_dir() {
         println!("{} is not a directory", &new_path);
     } else {
-        ls::list_contents(&working_dir).unwrap();
+        let show_dot: bool = matches.is_present("show_dot");
+        
+        ls::list_contents(&working_dir, show_dot).unwrap();
     }
 }

@@ -6,7 +6,7 @@ use std::time::SystemTime;
 use stdout_tables::tables::Table;
 use stdout_tables::themes::Theme;
 
-pub fn list_contents(dir: &Path) -> Result<(), Box<dyn Error>> {
+pub fn list_contents(dir: &Path, show_dot: bool) -> Result<(), Box<dyn Error>> {
     if dir.is_dir() {
         let headers: Vec<(Option<usize>,String)> = vec![
             (Some(3),String::from("#")), (Some(15),String::from("name")), 
@@ -24,6 +24,15 @@ pub fn list_contents(dir: &Path) -> Result<(), Box<dyn Error>> {
                 .file_name()
                 .into_string()
                 .or_else(|f| Err(format!("Invalid entry: {:?}", f)))?;
+
+            // handles displaying of hidden files
+            match name.chars().next() {
+                Some('.') => {
+                    if !show_dot { continue; }
+                },
+                _ => (),
+            }
+
             let file_type: String;
             let file_size: String = parse_bytes(&metadata.len());
             let last_modified: String = 
