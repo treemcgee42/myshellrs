@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Table","The representation of a table"]]});

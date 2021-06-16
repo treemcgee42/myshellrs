@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["WrappedCell","Can be thought of as the cells of the table, though in this context  it is slightly more general."]]});
