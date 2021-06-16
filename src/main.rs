@@ -24,7 +24,7 @@ fn main() {
                 // let arg_string = args.fold(String::new(), |acc,x| acc+x) 
                 //     + " --default-dir "+&working_dir.clone().into_os_string().into_string()
                 //     .expect("non-unicode os-string");
-                Command::new("./ls-util")
+                Command::new("./crates/ls-util/target/debug/ls-util")
                     .args(args).arg("--default-dir").arg(working_dir.clone().into_os_string().into_string().unwrap())
                     .status()
                     .expect("`ls` failed to run");
