@@ -6,7 +6,7 @@ use std::time::SystemTime;
 use stdout_tables::tables::Table;
 use stdout_tables::themes::Theme;
 
-pub fn list_contents(dir: &Path) -> Result<(), Box<Error>> {
+pub fn list_contents(dir: &Path) -> Result<(), Box<dyn Error>> {
     if dir.is_dir() {
         let headers: Vec<(Option<usize>,String)> = vec![
             (Some(3),String::from("#")), (Some(15),String::from("name")), 
